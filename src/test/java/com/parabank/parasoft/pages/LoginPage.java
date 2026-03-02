@@ -1,37 +1,35 @@
 package com.parabank.parasoft.pages;
 
-import com.parabank.parasoft.util.ParaBankUtil;
+import com.parabank.parasoft.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
-    public LoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver){
         super(driver);
     }
 
-    public LoginPage fillUsername(String username) {
+    public LoginPage fillUsername(String username){
         getElement(By.cssSelector("input[name='username']")).sendKeys(username);
         return this;
     }
 
-    public LoginPage fillPassword(String password) {
+    public LoginPage fillPassword(String password){
         getElement(By.xpath("//input[@name='password']")).sendKeys(password);
         return this;
     }
 
-    public OverviewPage clickLoginButton() {
+    public OverviewPage clickLoginButton(){
         getElement(By.cssSelector("input[value='Log In']")).click();
         return navigateToPage(OverviewPage.class);
     }
 
-/*
-    public RegisterPage clickRegisterLink() {
-        ParaBankUtil.waitForDomStable();
-        clickElement(By.cssSelector("a[href='register.htm']"));
+    public RegisterPage clickRegisterLink(){
+        getElement(By.cssSelector("a[href='register.htm']")).click();
         return navigateToPage(RegisterPage.class);
     }
-*/
-    public OverviewPage doLogin(String username, String password) {
+
+    public OverviewPage doLogin(String username, String password){
         fillUsername(username);
         fillPassword(password);
         return clickLoginButton();

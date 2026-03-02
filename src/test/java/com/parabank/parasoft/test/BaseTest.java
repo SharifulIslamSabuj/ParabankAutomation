@@ -74,7 +74,7 @@ public class BaseTest {
 
     }
 
-    @AfterMethod
+   @AfterMethod
     public void browserTeardown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
             takeScreenshot(result.getName());

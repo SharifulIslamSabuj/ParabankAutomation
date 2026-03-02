@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasePage extends Page {
@@ -28,7 +29,7 @@ public class BasePage extends Page {
         return element;
     }
 
-    @Override
+   /* @Override
     public List<WebElement> getElements(By selector) {
         List<WebElement> elements = null;
         try {
@@ -38,6 +39,21 @@ public class BasePage extends Page {
         } catch (Exception e) {
             addFailInfo("Selenium Webdriver is not found a Web Elements with " + selector + " Locator");
             System.out.println("Elements not found: " + selector);
+        }
+        return elements;
+    }*/
+
+    @Override
+    public List<WebElement> getElements(By selector) {
+        List<WebElement> elements;
+        try {
+            addInfo("Finding WebElements with locator: " + selector);
+            elements = driver.findElements(selector);
+            addInfo("Found WebElements with locator: " + selector);
+        } catch (Exception e) {
+            addFailInfo("WebElements not found with locator: " + selector);
+            System.out.println("Elements not found: " + selector);
+            elements = new ArrayList<>();
         }
         return elements;
     }
@@ -59,11 +75,17 @@ public class BasePage extends Page {
         return driver.getTitle();
     }
 
-    @Override
+   @Override
     public void waitForElementToBeVisible(By selector) {
         addInfo("Selenium Webdriver is waiting for the element with " + selector + " Locator to be visible");
         wait.until(ExpectedConditions.visibilityOf(getElement(selector)));
     }
+
+   /* @Override
+    public void waitForElementToBeVisible(By selector) {
+        addInfo("Waiting for element with " + selector + " to be visible");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
+    }*/
 
     public void addInfo(String message) {
         if (ReportTestManager.getTest() != null) {

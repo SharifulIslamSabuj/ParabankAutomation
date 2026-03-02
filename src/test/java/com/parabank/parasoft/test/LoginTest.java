@@ -2,37 +2,34 @@ package com.parabank.parasoft.test;
 
 import com.parabank.parasoft.pages.LoginPage;
 import com.parabank.parasoft.pages.OverviewPage;
+import com.parabank.parasoft.test.BaseTest;
 import com.parabank.parasoft.util.ParaBankUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
+public class LoginTest extends BaseTest{
+
     @Test
-    public void checkTittle() {
-        LoginPage lPage = pg.navigateToPage(LoginPage.class);
-        String title = lPage.getPageTitle();
-        Assert.assertEquals(title, ParaBankUtil.TITTLE);
+    public void checkTitle(){
+        LoginPage lpage=pg.navigateToPage(LoginPage.class);
+        String Title=lpage.getPageTitle();
+        Assert.assertEquals(Title, ParaBankUtil.TITTLE);
     }
 
     @Test
-    public void loginShouldSucceedWithValidCredentialV1() {
-        LoginPage lPage = pg.navigateToPage(LoginPage.class);
-        lPage = lPage
+    public void LoginV1(){
+        LoginPage lpage=pg.navigateToPage(LoginPage.class);
+        lpage
                 .fillUsername(getUsername())
                 .fillPassword(getPassword());
 
-        OverviewPage oPage = lPage
-                .clickLoginButton();
-        Assert.assertTrue(oPage.hasLogOutLink());
-
+        OverviewPage opage=lpage.clickLoginButton();
+        Assert.assertTrue(opage.hasLogOutLink(), "Logout link is not displayed. Login failed.");
     }
 
     @Test
-    public void loginShouldSucceedWithValidCredentialV2() {
-        OverviewPage oPage = pg.navigateToPage(LoginPage.class)
-                .doLogin(getUsername(), getPassword());
-        Assert.assertTrue(oPage.hasLogOutLink());
+    public void LoginV2(){
+        OverviewPage opage=pg.navigateToPage(LoginPage.class).doLogin(getUsername(),getPassword());
+        Assert.assertTrue(opage.hasLogOutLink(), "Logout link is not displayed. Login failed.");
     }
 }
-
-
