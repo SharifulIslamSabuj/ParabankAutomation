@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class RegisterTest extends BaseTest{
 
-    @Test
+    @Test()
     public void registerShouldSucceedWithHardData(){
 
         OverviewPage page=pg.navigateToPage(LoginPage.class)
@@ -24,9 +24,9 @@ public class RegisterTest extends BaseTest{
                 .fillZipCode("1216")
                 .fillPhone("12345643")
                 .fillSSN("SSN123")
-                .fillUsername("shariful")
-                .fillPassword("shariful")
-                .fillConfirmPassword("shariful")
+                .fillUsername("shariful13")
+                .fillPassword("shariful13")
+                .fillConfirmPassword("shariful13")
                 .clickRegisterButtonWithSuccess();
         Assert.assertTrue(page.hasLogOutLink());
     }

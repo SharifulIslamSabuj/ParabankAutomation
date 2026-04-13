@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest{
         Assert.assertEquals(Title, ParaBankUtil.TITTLE);
     }
 
-    @Test
+    @Test ()
     public void LoginV1(){
         LoginPage lpage=pg.navigateToPage(LoginPage.class);
         lpage

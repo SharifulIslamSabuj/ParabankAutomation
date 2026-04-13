@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class OpenNewAccountTest extends BaseTest{
 
-    @Test
+    @Test()
 
     public void openNewAccountShouldSucceedV1(){
 

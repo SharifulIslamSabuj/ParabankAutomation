@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class RequestLoanTest extends BaseTest{
 
-    @Test
+    @Test()
 
     public void requestLoanShouldSucceed(){
 
