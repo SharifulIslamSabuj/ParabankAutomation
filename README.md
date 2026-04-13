@@ -124,11 +124,13 @@ browserName=chrome
 
 * Run: `regression-suite.xml`
 
-#### ✔ Using Gradle:
+#### ✔ Using Gradle Wrapper:
 
-```bash
-gradle test
-```
+Windows:
+.\gradlew test
+
+Mac/Linux:
+./gradlew test
 
 ---
 
