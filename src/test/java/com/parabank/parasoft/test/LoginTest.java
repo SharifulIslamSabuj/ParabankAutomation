@@ -4,6 +4,7 @@ import com.parabank.parasoft.pages.LoginPage;
 import com.parabank.parasoft.pages.OverviewPage;
 import com.parabank.parasoft.test.BaseTest;
 import com.parabank.parasoft.util.ParaBankUtil;
+import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -27,7 +28,7 @@ public class LoginTest extends BaseTest{
         Assert.assertTrue(opage.hasLogOutLink(), "Logout link is not displayed. Login failed.");
     }
 
-    @Test
+    @Test(description = "Login test using method chaining")
     public void LoginV2(){
         OverviewPage opage=pg.navigateToPage(LoginPage.class).doLogin(getUsername(),getPassword());
         Assert.assertTrue(opage.hasLogOutLink(), "Logout link is not displayed. Login failed.");
