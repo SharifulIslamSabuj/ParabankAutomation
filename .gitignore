@@ -12,3 +12,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Allure reports
+allure-results/
+allure-report/
